@@ -1,0 +1,36 @@
+server:
+  port: 1111
+spring:
+  application:
+    name: USER-SERVICE
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    password: Sevar#123
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: system
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  config:
+    import: optional:configserver:http://localhost:1114
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health 
+  endpoint:
+    health:
+      show-details: always
+resilience4j:
+  circuitbreaker:
+    instances: 
+     ratingHotelBreaker: 
+       register-health-indicator: true
+       event-consumer-buffer-size: 10
+      
+        

@@ -1,0 +1,5 @@
+package com.HotelService.HotelService.securityconfig;
+
+public class Config {
+
+}

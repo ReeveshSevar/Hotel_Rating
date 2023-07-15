@@ -1,0 +1,30 @@
+package com.user.service.UserService;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.user.service.UserService.entity.Rating;
+import com.user.service.UserService.external.service.RatingService;
+
+@SpringBootTest
+class UserServiceApplicationTests {
+
+	
+	
+	@Test
+	void contextLoads() {
+	}
+	
+	@Autowired
+	private RatingService ratingService;
+	
+	@Test
+	void createRating() 
+	{
+		Rating rating = Rating.builder().rating(10).userId(-425928358).hotelId(2083336135).feedback("Crated Using Feign Client").build();
+		Rating saveRating = ratingService.createRating(rating);
+		System.out.println("New Rating Created");
+	}
+
+}

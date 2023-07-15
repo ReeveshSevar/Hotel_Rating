@@ -1,0 +1,5 @@
+package com.user.service.UserService.configuration;
+
+public class RestTemplateConfiguration {
+
+}

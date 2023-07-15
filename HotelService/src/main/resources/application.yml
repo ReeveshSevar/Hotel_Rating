@@ -1,0 +1,15 @@
+server:
+  port: 1112
+spring:
+  application:
+    name: HOTEL-SERVICE
+  datasource:
+    password: Sevar#123
+    url: jdbc:postgresql://localhost:5432/microservice
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  config: 
+    import: optional:configserver:http://localhost:1114 

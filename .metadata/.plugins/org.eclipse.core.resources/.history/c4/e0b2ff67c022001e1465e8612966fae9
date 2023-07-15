@@ -1,0 +1,22 @@
+server:
+  port: 1113
+spring:
+  application:
+    name: RATING-SERVICE
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    password: Sevar#123
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: system
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  config:
+    import: optional:configserver:http://localhost:1114
+   
+#okta:
+#  oauth2:
+#    issuer: https://dev-51620093.okta.com/oauth2/default
+#    audience: api://default

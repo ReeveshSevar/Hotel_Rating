@@ -1,0 +1,79 @@
+server:
+  port: 1111
+spring:
+  application:
+    name: USER-SERVICE
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    password: Sevar#123
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: system
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  config:
+    import: optional:configserver:http://localhost:1114
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri:  https://dev-51620093.okta.com/oauth2/default
+      client:
+        registration:
+          my-client: 
+            provider: okta
+            authorization-grant-type: client_credentials
+            scope: internal
+            client-id: 0oaac5rzq8sytdWEQ5d7
+            client-secret: kvdCkU6kNGDNuYiutJQlwoEr52wy_zcjTfYeEaOl
+        provider: 
+          okta: 
+            issuer-uri: https://dev-51620093.okta.com/oauth2/default
+
+          
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health 
+  endpoint:
+    health:
+      show-details: always
+      
+resilience4j:
+  circuitbreaker:
+    instances: 
+     ratingHotelBreaker: 
+       register-health-indicator: true
+       event-consumer-buffer-size: 10
+       failure-rate-threshold: 50
+       minimum-number-of-calls: 5
+       automatic-transition-from-open-to-half-open-enabled: true
+       wait-duration-in-open-state: 6s
+       permitted-number-of-calls-in-half-open-state: 3
+       sliding-window-size: 10
+       sliding-window-type: COUNT_BASED
+       
+  retry:
+    instances:
+      ratingHotelService:
+        max-attempts: 3
+        wait-duration: 2s
+      
+  ratelimiter:
+    instances:
+      userRateLimiter: 
+        limit-refresh-period: 4s
+        limit-for-period: 2
+        timeout-duration: 0s
+        
+okta:
+  oauth2:
+    issuer: https://dev-51620093.okta.com/oauth2/default
+    audience: api://default
+        

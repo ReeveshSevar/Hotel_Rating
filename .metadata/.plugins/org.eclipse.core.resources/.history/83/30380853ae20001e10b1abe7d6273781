@@ -1,0 +1,5 @@
+package com.gateway.API.Gateway.auth;
+
+public class AuthController {
+
+}

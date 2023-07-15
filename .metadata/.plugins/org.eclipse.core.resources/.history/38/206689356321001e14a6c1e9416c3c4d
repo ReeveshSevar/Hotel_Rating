@@ -1,0 +1,5 @@
+package com.user.service.UserService.config.interceptor;
+
+public class FeignClientInterceptor {
+
+}

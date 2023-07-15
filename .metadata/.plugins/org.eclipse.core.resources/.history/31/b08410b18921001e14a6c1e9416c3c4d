@@ -1,0 +1,6 @@
+package com.rating.service.securityconfig;
+
+
+public class Config {
+
+}

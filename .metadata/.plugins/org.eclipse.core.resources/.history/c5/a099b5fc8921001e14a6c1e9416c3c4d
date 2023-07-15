@@ -1,0 +1,19 @@
+package com.rating.service.securityconfig;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.web.server.WebFilterChain;
+
+@Configuration
+@EnableWebSecurity
+public class Config {
+	
+	@Bean
+	public WebFilterChain filterChain(HttpSecurity security)
+	{
+		
+	}
+	
+}

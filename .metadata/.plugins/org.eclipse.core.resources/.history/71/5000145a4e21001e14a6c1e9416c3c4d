@@ -1,0 +1,8 @@
+package com.gateway.API.Gateway.models;
+
+public class AuthResponse {
+	private Integer userId;
+	private String accessToken;
+	private String refreshToken;
+	private long expireAt;
+}
