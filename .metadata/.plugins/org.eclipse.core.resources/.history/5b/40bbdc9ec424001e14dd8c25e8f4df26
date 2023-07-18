@@ -1,0 +1,35 @@
+package com.user.service.UserService.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import com.user.service.UserService.entity.User;
+import com.user.service.UserService.service.UserService;
+
+@org.springframework.stereotype.Controller
+@RequestMapping("/user")
+public class Controller {
+	
+	@Autowired
+	private UserService userService;
+	
+	@GetMapping()
+	public String getData(Model model)
+	{
+		List<User> list = userService.getAllUser();
+		model.addAttribute("list",list);
+		return "data";
+	}
+	
+	@GetMapping("/{id}")
+	public String getSingleData(@PathVariable Integer id)
+	{
+		
+		return null;
+	}
+
+}

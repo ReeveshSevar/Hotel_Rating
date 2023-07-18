@@ -1,0 +1,5 @@
+package com.HotelService.HotelService.entity;
+
+public class Rarting {
+
+}

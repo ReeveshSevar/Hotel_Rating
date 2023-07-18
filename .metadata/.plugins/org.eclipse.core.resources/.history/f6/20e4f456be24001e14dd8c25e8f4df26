@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Users</h1>
+	<!-- <span th:text="${response}"></span> -->
+	<table>
+		<thead>
+			<tr>User Id</tr>
+			<tr>Name</tr>
+			<tr>Email</tr>
+			<tr>About</tr>
+			<tr>Ratings</tr>
+		</thead>
+		<tr th:each="ob:${user}">
+			<td th:text="${user.userId}"></td>
+			<td th:text="${user.name}"></td>
+			<td th:text="${user.email}"></td>
+			<td th:text="${user.about}"></td>
+		</tr>
+	</table>
+</body>
+</html>

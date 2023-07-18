@@ -10,7 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Hotel {
-	private Integer hotelID;
 	private String name;
 	private String location;
 	private String about;

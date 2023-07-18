@@ -1,0 +1,3 @@
+INDEX VERSION 1.132
+D:\MyProject\Hotel Rating\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4111565484.index
+\UserService\src\main\resources

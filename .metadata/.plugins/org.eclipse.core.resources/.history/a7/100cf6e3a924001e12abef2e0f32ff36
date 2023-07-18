@@ -1,0 +1,60 @@
+server:
+  port: 1111
+spring:
+  application:
+    name: USER-SERVICE
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    password: Sevar#123
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: system
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  config: 
+    import: optional:configserver:http://localhost:1114
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: =.html
+          
+          
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health 
+  endpoint:
+    health:
+      show-details: always
+      
+resilience4j:
+  circuitbreaker:                          #Configuration Of Circuit Breaker
+    instances: 
+     ratingHotelBreaker: 
+       register-health-indicator: true
+       event-consumer-buffer-size: 10
+       failure-rate-threshold: 50
+       minimum-number-of-calls: 5
+       automatic-transition-from-open-to-half-open-enabled: true
+       wait-duration-in-open-state: 6s
+       permitted-number-of-calls-in-half-open-state: 3
+       sliding-window-size: 10
+       sliding-window-type: COUNT_BASED
+       
+  retry:                                   #Configuration Of RETRY
+    instances:
+      ratingHotelService:
+        max-attempts: 3
+        wait-duration: 2s
+      
+  ratelimiter:                             #Configuration Of RateLimitor
+    instances:
+      userRateLimiter: 
+        limit-refresh-period: 1s
+        limit-for-period: 2              
+        timeout-duration: 0s

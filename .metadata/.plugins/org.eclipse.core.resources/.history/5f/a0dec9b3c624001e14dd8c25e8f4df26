@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Data Page</title>
+<link rel="stylesheet" th:href="@{/css/MyUi.css}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> -->
+</head>
+<body>
+	 <table class="table table-bordered table-dark">
+		<thead>
+			
+			<tr>
+      			<th scope="col">User Id</th>
+      			<th scope="col">Name</th>
+      			<th scope="col">Email</th>
+		        <th scope="col">About</th>
+		        <th scope="col">Ratings</th>
+    		</tr>
+		</thead>
+		<tr th:each="ob:${list}">
+			<td scope="row" th:text="${ob.userId}"></td>
+			<td scope="row" th:text="${ob.name}"></td>
+			<td scope="row" th:text="${ob.email}"></td>
+			<td scope="row" th:text="${ob.about}"></td>
+			<td scope="row">
+				<a th:href="@{/user/${ob.userId}">Ratings</a>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

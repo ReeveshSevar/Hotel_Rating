@@ -32,7 +32,8 @@ public class HotelController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Hotel> getHotel(@PathVariable Integer id)
 	{
-		return ResponseEntity.status(HttpStatus.OK).body(hotelService.get(id));
+		Hotel hotel = hotelService.get(id);
+		return ResponseEntity.ok(hotel);
 	}
 
 	// Fetch All Hotels
